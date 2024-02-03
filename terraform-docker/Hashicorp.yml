@@ -1,0 +1,9 @@
+ - name: clone repo
+      become: yes
+      shell:  git clone https://github.com/manbobo2002/nomad-consul.git
+- name: install uzip
+      become: yes
+      shell: sudo apt-get update -y && sudo apt-get install unzip -y
+ - name: install uzip
+         become: yes
+         shell: sudo apt-get update -y && sudo apt-get install unzip -y

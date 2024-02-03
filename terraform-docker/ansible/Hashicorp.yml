@@ -1,0 +1,38 @@
+- name: Install HashiCorp Consul and Nomad
+  hosts: your_host  # Replace with the target machine(s) or group(s) you want to install Consul and Nomad on
+  become: true  # Run commands with elevated privileges (sudo)
+
+  tasks:
+    - name: Install required packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - unzip
+        - curl
+
+    - name: Download Consul
+      get_url:
+        url: "https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_linux_amd64.zip"
+        dest: /tmp/consul.zip
+
+    - name: Extract Consul
+      unarchive:
+        src: /tmp/consul.zip
+        dest: /usr/local/bin
+        remote_src: yes
+      when: consul_version is defined
+
+    - name: Download Nomad
+      get_url:
+        url: "https://releases.hashicorp.com/nomad/{{ nomad_version }}/nomad_{{ nomad_version }}_linux_amd64.zip"
+        dest: /tmp/nomad.zip
+      tags: nomad
+
+    - name: Extract Nomad
+      unarchive:
+        src: /tmp/nomad.zip
+        dest: /usr/local/bin/
+        remote_src: yes
+      when: nomad_version is defined
+      tags: nomad
