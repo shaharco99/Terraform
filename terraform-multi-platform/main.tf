@@ -131,13 +131,13 @@ resource "google_compute_instance" "vm" {
 
 # Linode Instances
 resource "linode_instance" "instance" {
-  count      = var.platform == "linode" ? var.instance_count : 0
-  label      = "multi-platform-linode-${count.index + 1}"
-  region     = var.region
-  type       = var.instance_type
-  image      = var.image_name
+  count           = var.platform == "linode" ? var.instance_count : 0
+  label           = "multi-platform-linode-${count.index + 1}"
+  region          = var.region
+  type            = var.instance_type
+  image           = var.image_name
   authorized_keys = [var.authorized_key]
-  root_pass  = var.root_pass
+  root_pass       = var.root_pass
 
   tags = values(var.tags)
 }

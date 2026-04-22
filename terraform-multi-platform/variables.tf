@@ -53,7 +53,7 @@ variable "docker_image" {
 variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)
-  default     = {
+  default = {
     Environment = "dev"
     Project     = "multi-platform"
   }
