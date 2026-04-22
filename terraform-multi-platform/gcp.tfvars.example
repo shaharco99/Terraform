@@ -1,0 +1,12 @@
+# Example configuration for GCP deployment
+platform = "gcp"
+region = "us-central1"
+instance_count = 1
+instance_type = "e2-micro"
+image_name = "ubuntu-2204-lts"
+
+# Uncomment and set your GCP credentials
+# gcp_credentials_file = "/path/to/your/service-account.json"
+
+# SSH public key (optional, will use ~/.ssh/id_rsa.pub if not set)
+# authorized_key = "ssh-rsa AAAA..."

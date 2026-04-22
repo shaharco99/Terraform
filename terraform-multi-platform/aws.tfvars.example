@@ -1,0 +1,12 @@
+# Example configuration for AWS deployment
+platform = "aws"
+region = "us-east-1"
+instance_count = 1
+instance_type = "t2.micro"
+
+# Optional: specify AMI ID (leave empty for auto-detection of latest Ubuntu 22.04)
+# ami_id = ""
+
+# Uncomment and set your AWS credentials
+# aws_access_key = "your-access-key"
+# aws_secret_key = "your-secret-key"

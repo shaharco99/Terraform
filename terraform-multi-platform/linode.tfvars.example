@@ -1,0 +1,11 @@
+# Example configuration for Linode deployment
+platform = "linode"
+region = "us-east"
+instance_count = 1
+instance_type = "g6-nanode-1"
+image_name = "linode/ubuntu22.04"
+
+# Uncomment and set your Linode credentials
+# linode_token = "your-linode-api-token"
+# authorized_key = "ssh-rsa AAAA..."
+# root_pass = "your-secure-root-password"

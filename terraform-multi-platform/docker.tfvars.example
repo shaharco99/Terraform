@@ -1,0 +1,8 @@
+# Example configuration for Docker deployment
+platform = "docker"
+instance_count = 1
+docker_image = "nginx:latest"
+
+# Optional: customize instance settings (not used for Docker)
+# region = "us-east-1"
+# instance_type = "t2.micro"

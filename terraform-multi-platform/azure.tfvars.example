@@ -1,0 +1,16 @@
+# Example configuration for Azure deployment
+platform = "azure"
+region = "East US"
+instance_count = 1
+instance_type = "Standard_DS1_v2"
+image_name = "22.04-LTS"
+resource_group_name = "multi-platform-rg"
+
+# Uncomment and set your Azure credentials
+# azure_subscription_id = "your-subscription-id"
+# azure_client_id = "your-client-id"
+# azure_client_secret = "your-client-secret"
+# azure_tenant_id = "your-tenant-id"
+
+# SSH public key (optional, will use ~/.ssh/id_rsa.pub if not set)
+# authorized_key = "ssh-rsa AAAA..."
