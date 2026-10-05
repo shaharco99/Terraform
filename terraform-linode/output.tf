@@ -1,8 +1,9 @@
-#output "linode_provision_domain_id" {
-#  value =  join("\n",linode_instance.ubuntu.*.ipv4)
-#}
-
 output "hosts_names" {
-  description = "names of the linode instance created"
-  value = join("\n",linode_instance.ubuntu.*.label)
+  description = "Labels of the Linode instances"
+  value       = join("\n", linode_instance.ubuntu[*].label)
+}
+
+output "public_ips" {
+  description = "Public IPv4 addresses of the Linode instances"
+  value       = linode_instance.ubuntu[*].ip_address
 }

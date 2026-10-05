@@ -7,17 +7,14 @@ resource "aws_ecs_cluster" "aws-ecs-cluster" {
 }
 
 resource "aws_cloudwatch_log_group" "log-group" {
-  name = "${var.app_name}-${var.app_environment}-logs"
+  name              = "${var.app_name}-${var.app_environment}-logs"
+  retention_in_days = var.aws_cloudwatch_retention_in_days
 
   tags = {
     Application = var.app_name
     Environment = var.app_environment
   }
 }
-
-#data "template_file" "env_vars" {
-#  template = file("env_vars.json")
-#}
 
 resource "aws_ecs_task_definition" "aws-ecs-task" {
   family = "${var.app_name}-task"
@@ -189,5 +186,3 @@ resource "aws_lb_listener" "listener" {
     target_group_arn = aws_lb_target_group.target_group.id
   }
 }
-
-

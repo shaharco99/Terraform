@@ -39,18 +39,16 @@ variable "load_balancer_name" {
   default = "my-ecs-load-balancer"
 }
 
-variable "load_balancer_arn" {
-  default = ""
-}
-
-variable "dns_name" {
-  default = ""
+variable "security_group_ids" {
+  default = ["sg-12345678"]
 }
 
 variable "AWS_ACCESS_KEY_ID" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "AWS_SECRET_ACCESS_KEY" {
-  type = string
+  type      = string
+  sensitive = true
 }

@@ -15,7 +15,7 @@ resource "aws_route53_record" "record" {
   name    = var.route53_record_name
   type    = "A"
   alias {
-    name                   = var.load_balancer_arn
+    name                   = aws_lb.nlb.dns_name
     zone_id                = aws_lb.nlb.zone_id
     evaluate_target_health = true
   }

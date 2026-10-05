@@ -3,13 +3,13 @@ resource "null_resource" "after_aws_instance" {
     always_run = timestamp()
   }
   depends_on = [aws_instance.ubuntu]
-  #create Ansible Inventory when destroy
+  # Recreate the inventory file with a group header
   provisioner "local-exec" {
     command = "mkdir -p ansible && echo  \"[EC2_hosts]\" > ./ansible/hosts "
   }
-  #add hosts name to Ansible Inventory
+  # Append instance names from the hosts_names output
   provisioner "local-exec" {
     command = "terraform output -raw hosts_names >> ./ansible/hosts"
-    when = create
+    when    = create
   }
 }

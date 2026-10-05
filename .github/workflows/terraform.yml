@@ -1,0 +1,43 @@
+name: terraform
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.16.5
+      - run: terraform fmt -check -recursive -diff
+
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir:
+          - terraform-azure
+          - terraform-docker
+          - terraform-EC2
+          - terraform-ecs
+          - terraform-GCP
+          - terraform-linode
+          - terraform-multi-platform
+          - terraform-clinic
+    defaults:
+      run:
+        working-directory: ${{ matrix.dir }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.16.5
+      # -backend=false: no state, no cloud credentials needed
+      - run: terraform init -backend=false -input=false
+      - run: terraform validate -no-color

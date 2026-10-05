@@ -1,17 +1,8 @@
 terraform {
-  cloud {
-    organization = "shaharco99"
-    workspaces {
-      name = "Devops"
-    }
-  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.6.0"
-    }
-    null = {
-      source = "hashicorp/null"
+      version = "~> 5.0"
     }
   }
 }

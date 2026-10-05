@@ -1,12 +1,19 @@
-#hosts files
+# Generated Ansible inventories
 */ansible/hosts
+*/ansible/Inventory
+
+# Cloud credentials (service account keys, etc.)
+*.json
+*.pem
+*.key
+
 # Local .terraform directories
 **/.terraform
 
 # .tfstate files
 *.tfstate
 *.tfstate.*
-*.lock.hcl*
+*.tfplan
 
 # Crash log files
 crash.log
@@ -35,7 +42,3 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
-/jenkins/docker-jenkins/agent.jar
-/remoting/
-/terraform-EC2@tmp/
-
