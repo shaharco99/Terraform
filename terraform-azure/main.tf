@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "test" {
-  name     = "RG_test"
+  name     = var.resource_group_name
   location = var.resource_group_location
 }
 
@@ -19,18 +19,11 @@ resource "azurerm_subnet" "test" {
 
 # Create public IPs
 resource "azurerm_public_ip" "test" {
-  count                        = var.countVMs
-  name                         = "test-${count.index}-pip"
-  resource_group_name          = azurerm_resource_group.test.name
-  allocation_method            = "Dynamic"
-  location                     = azurerm_resource_group.test.location
-}
-
-# Get public IPs for output
-data "azurerm_public_ip" "test" {
-  count                        = var.countVMs
-  name                         = "test-${count.index}-pip"
-  resource_group_name          = azurerm_resource_group.test.name
+  count               = var.countVMs
+  name                = "test-${count.index}-pip"
+  resource_group_name = azurerm_resource_group.test.name
+  allocation_method   = "Dynamic"
+  location            = azurerm_resource_group.test.location
 }
 
 resource "azurerm_network_interface" "test" {
@@ -65,11 +58,9 @@ resource "azurerm_virtual_machine" "test" {
   network_interface_ids = [element(azurerm_network_interface.test.*.id, count.index)]
   vm_size               = var.vm_size
 
-  # Uncomment this line to delete the OS disk automatically when deleting the VM
-   delete_os_disk_on_termination = true
-
-  # Uncomment this line to delete the data disks automatically when deleting the VM
-   delete_data_disks_on_termination = true
+  # Remove OS and data disks together with the VM
+  delete_os_disk_on_termination    = true
+  delete_data_disks_on_termination = true
 
   storage_image_reference {
     publisher = "Canonical"
@@ -104,8 +95,8 @@ resource "azurerm_virtual_machine" "test" {
 
   os_profile {
     computer_name  = "hostname"
-    admin_username = "testadmin"
-    admin_password = "Password1234!"
+    admin_username = var.admin_username
+    admin_password = var.admin_password
   }
 
   os_profile_linux_config {

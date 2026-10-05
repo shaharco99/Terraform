@@ -1,10 +1,7 @@
-#! /bin/bash
-sudo apt update
-sudo apt update
-sudo apt-get install docker-ce
-sudo systemctl start docker
-sudo systemctl enable docker
-sudo groupadd docker
-sudo usermod -aG docker ubuntu
-sudo docker pull nginx:latest
-sudo docker run --name mynginx1 -p 80:80 -d nginx
+#!/bin/bash
+# EC2 user data: install Docker and run nginx on port 80.
+apt-get update
+apt-get install -y docker.io
+systemctl enable --now docker
+usermod -aG docker ubuntu
+docker run --name mynginx1 -p 80:80 -d nginx:latest

@@ -1,11 +1,13 @@
 variable "aws_access_key" {
   type        = string
   description = "AWS Access Key"
+  sensitive   = true
 }
 
 variable "aws_secret_key" {
   type        = string
   description = "AWS Secret Key"
+  sensitive   = true
 }
 
 variable "aws_region" {
@@ -31,17 +33,20 @@ variable "app_environment" {
 
 variable "cidr" {
   description = "The CIDR block for the VPC."
-  default     = "10.0.0.0/16"
+  default     = "10.10.0.0/16"
 }
 
 variable "public_subnets" {
+  type        = list(string)
   description = "List of public subnets"
 }
 
 variable "private_subnets" {
+  type        = list(string)
   description = "List of private subnets"
 }
 
 variable "availability_zones" {
+  type        = list(string)
   description = "List of availability zones"
 }
