@@ -15,7 +15,7 @@ Every folder passes `terraform fmt -check` and `terraform validate`; a GitHub Ac
 | [`terraform-azure`](terraform-azure) | Resource group, VNet, N Ubuntu VMs with public IPs and data disks; Ansible inventory file | Learning lab |
 | [`terraform-GCP`](terraform-GCP) | N Compute Engine instances with ephemeral public IPs | Learning lab |
 | [`terraform-linode`](terraform-linode) | N Linode instances plus one DigitalOcean DNS A record each; Ansible inventory file | Learning lab |
-| [`terraform_clinic`](terraform_clinic) | ECS cluster, S3 bucket, Route 53 zone/record, Network Load Balancer (placeholder VPC/subnet IDs) | Skeleton |
+| [`terraform-clinic`](terraform-clinic) | ECS cluster, S3 bucket, Route 53 zone/record, Network Load Balancer (placeholder VPC/subnet IDs) | Skeleton |
 
 *Working config*: complete and parameterised, deployable with credentials. *Learning lab*: an exercise with test names or legacy resources. *Skeleton*: pieces not wired together yet.
 

@@ -29,7 +29,7 @@ jobs:
           - terraform-GCP
           - terraform-linode
           - terraform-multi-platform
-          - terraform_clinic
+          - terraform-clinic
     defaults:
       run:
         working-directory: ${{ matrix.dir }}
